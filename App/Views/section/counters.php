@@ -9,12 +9,15 @@
         <div class="counters row d-flex justify-content-center text-center align-items-center">
             <div class="col-lg-4 posts_counter">
                 <h5>Negative Posts</h5>
+                <h4></h4>
             </div>
             <div class="col-lg-4 posts_counter">
                 <h5>All Posts</h5>
+                <h4></h4>
             </div>
             <div class="col-lg-4 posts_counter">
                 <h5>Positive Posts</h5>
+                <h4></h4>
             </div>
         </div>
     </div>

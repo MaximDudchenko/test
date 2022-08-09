@@ -13,7 +13,6 @@ try {
 
     require_once ROOT_DIR . '/routes.php';
 
-
     if (!preg_match('/src/', $_SERVER['REQUEST_URI'])) {
         $router->dispatch($_SERVER['REQUEST_URI']);
     }

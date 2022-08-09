@@ -9,10 +9,14 @@ class CommentController extends Controller
 {
     public function store()
     {
-        Comment::create([
+        $id = Comment::create([
             'post_id' => $_POST['post_id'],
             'vizitore_name' => $_POST['name'],
             'comment' => $_POST['comment']
         ]);
+
+        $comment = Comment::find($id);
+
+        die(json_encode($comment));
     }
 }

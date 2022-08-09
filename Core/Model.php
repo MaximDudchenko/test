@@ -17,7 +17,7 @@ class Model
         return static::connect()->query($sql)->fetchAll(PDO::FETCH_CLASS, static::class);
     }
 
-    public static function create(array $fields)
+    public static function create(array $fields): int
     {
         $values = static::prepareQueryValues($fields);
 
@@ -43,5 +43,15 @@ class Model
             'keys' => implode(', ', $keys),
             'placeholders' => implode(', ', $placeholder)
         ];
+    }
+
+    public static function find(int $id)
+    {
+        $sql = 'SELECT * FROM ' . static::$tableName . ' WHERE id = :id';
+        $query = static::connect()->prepare($sql);
+        $query->bindParam('id', $id, PDO::PARAM_INT);
+        $query->execute();
+
+        return $query->fetchObject(static::class);
     }
 }

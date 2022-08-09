@@ -9,10 +9,13 @@ class PostController extends Controller
 {
     public function store()
     {
-        Post::create([
+        $id = Post::create([
             'vizitore_name' => $_POST['name'],
             'post' => $_POST['post']
         ]);
 
+        $post = Post::find($id);
+
+        die(json_encode($post));
     }
 }

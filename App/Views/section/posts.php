@@ -12,15 +12,15 @@
         </div>
 
         <div class="row d-flex justify-content-end mt-3">
-            <div class="col-lg-6">
+            <div class="col-lg-6 posts">
                 <?php foreach ($posts as $post): ?>
-                    <div class="post border p-3 mt-3">
+                    <div class="post-<?= $post->id ?> border p-3 mt-3">
                         <div class="row d-flex justify-content-between post-title">
                             <div class="col">
                                 <h5><?= $post->vizitore_name ?></h5>
                             </div>
                             <div class="col d-flex justify-content-end">
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addComment">
+                                <button type="button" class="btn btn-primary comment-modal" data-id="<?= $post->id ?>" data-bs-toggle="modal" data-bs-target="#addComment">
                                     Add Comment
                                 </button>
                             </div>
