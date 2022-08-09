@@ -7,7 +7,7 @@
                     <button type="button" class="btn-close close-comment" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <input type="number" class="form-control" id="post_id" name="post_id">
+                    <input type="number" class="form-control" id="post_id" name="post_id" hidden>
                     <label for="name" class="form-label">Name:</label>
                     <input type="text" class="form-control" id="name" name="name" required>
                     <label for="comment" class="form-label">Comment:</label>

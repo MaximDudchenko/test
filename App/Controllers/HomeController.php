@@ -14,8 +14,16 @@ class HomeController extends Controller
     {
         $posts = Post::all();
         $comments = Comment::all();
-        $rates = Rate::all();
+        $negativePosts = Post::countByRate('1, 2');
+        $positivePosts = Post::countByRate('4, 5');
+        $allPosts = Post::countByRate();
 
-        View::render('index', ['posts' => $posts, 'comments' => $comments, 'rates' => $rates]);
+        View::render('index', [
+            'posts' => $posts,
+            'comments' => $comments,
+            'negativePosts' => $negativePosts,
+            'positivePosts' => $positivePosts,
+            'allPosts' => $allPosts
+            ]);
     }
 }

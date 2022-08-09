@@ -1,3 +1,10 @@
+$(document).on('click', '.post-modal', function(e) {
+    e.preventDefault();
+    console.log($(this));
+    $('.post-form #name').val('');
+    $('.post-form #comment').val('');
+})
+
 $(document).on('click', '.add-post', function(e) {
     e.preventDefault();
 
@@ -5,6 +12,10 @@ $(document).on('click', '.add-post', function(e) {
 
     formData.name = $('.post-form #name').val();
     formData.post = $('.post-form #post').val();
+
+    if (formData.name == "" || formData.post == "" ) {
+        return false;
+    }
 
     $.ajax({
         url: "ajax/posts/store",
@@ -19,7 +30,7 @@ $(document).on('click', '.add-post', function(e) {
                                 <h5>${data.vizitore_name}</h5>
                             </div>
                             <div class="col d-flex justify-content-end">
-                                <button type="button" class="btn btn-primary" data-id="${data.id}" data-bs-toggle="modal" data-bs-target="#addComment">
+                                <button type="button" class="btn btn-primary comment-modal" data-id="${data.id}" data-bs-toggle="modal" data-bs-target="#addComment">
                                     Add Comment
                                 </button>
                             </div>
@@ -29,7 +40,11 @@ $(document).on('click', '.add-post', function(e) {
                         </div>
                         <div class="row d-flex justify-content-between post-footer mt-3">
                             <div class="col">
-                               
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>   
                             </div>
                             <div class="col d-flex justify-content-end">
                                 <p>${data.created_at}</p>
@@ -39,11 +54,18 @@ $(document).on('click', '.add-post', function(e) {
         }
     })
 
+    $('.all-posts').text(parseInt($('.all-posts').text()) + 1);
+
+
     $('.close-post').click();
 })
 
 $(document).on('click', '.comment-modal', function(e) {
     e.preventDefault();
+
+    $('.comment-form #post_id').val('');
+    $('.comment-form #name').val('');
+    $('.comment-form #comment').val('');
 
     let btn = $(this);
     $('.comment-form #post_id').val(btn.data('id'));
@@ -58,6 +80,10 @@ $(document).on('click', '.add-comment', function(e) {
     formData.post_id = $('.comment-form #post_id').val();
     formData.name = $('.comment-form #name').val();
     formData.comment = $('.comment-form #comment').val();
+
+    if (formData.name == "" || formData.comment == "" ) {
+        return false;
+    }
 
     $.ajax({
         url: "ajax/comments/store",

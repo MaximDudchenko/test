@@ -5,7 +5,7 @@
         </div>
         <div class="row">
             <div class="col-lg-12 d-flex justify-content-end">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addPost">
+                <button type="button" class="btn btn-primary post-modal" data-bs-toggle="modal" data-bs-target="#addPost">
                     Add Post
                 </button>
             </div>
@@ -30,17 +30,17 @@
                         </div>
                         <div class="row d-flex justify-content-between post-footer mt-3">
                             <div class="col">
-                                <?php foreach ($rates as $rate): ?>
-                                    <?php if ($post->id === $rate->post_id): ?>
+<!--                                --><?php //foreach ($rates as $rate): ?>
+<!--                                    --><?php //if ($post->id === $rate->post_id): ?>
                                         <?php for($i = 1; $i <= 5; $i++): ?>
-                                            <?php if ($rate->rate >= $i): ?>
+                                            <?php if ($post->rate >= $i): ?>
                                                 <i class="fas fa-star"></i>
                                             <?php else: ?>
                                                 <i class="far fa-star"></i>
                                             <?php endif; ?>
                                         <?php endfor; ?>
-                                    <?php endif; ?>
-                                <?php endforeach; ?>
+<!--                                    --><?php //endif; ?>
+<!--                                --><?php //endforeach; ?>
                             </div>
                             <div class="col d-flex justify-content-end">
                                 <p><?= $post->created_at ?></p>
